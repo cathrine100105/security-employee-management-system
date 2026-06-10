@@ -1,4 +1,8 @@
 package com.security.management.repository;
 
-public interface SecurityRepository {
+import com.security.management.entity.SecurityEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SecurityRepository extends JpaRepository<SecurityEntity,Long> {
+
 }

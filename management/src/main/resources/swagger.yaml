@@ -1,0 +1,84 @@
+openapi: 3.0.1
+info:
+  title: Security Guard Management System
+  description: Managing the guards data
+  version: 1.0.0
+paths:
+  /security:
+    post:
+      tags:
+        - security
+      summary: Add a new guard
+      operationId: createGuardDetails
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SecurityDTO'
+      responses:
+        '201':
+          description: Profile created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecurityDTO'
+
+
+components:
+  schemas:
+    SecurityDTO:
+      type: object
+      properties:
+        guardId:
+          type: integer
+        name:
+          type: string
+        address:
+          type: string
+        age:
+          type: integer
+        dob:
+          type: string
+          format: date
+        qualification:
+          type: string
+        shiftType:
+          type: string
+        experience:
+          type: string
+        mobile1:
+          type: string
+        mobile2:
+          type: string
+        joinedDate:
+          type: string
+          format: date
+        status:
+          type: string
+          enum:
+            - Active
+            - InActive
+        assignedLocation:
+          type: string
+
+
+    FilterDTO:
+      type: object
+      description: filter based on data
+      properties:
+        name:
+          type: string
+        guardId:
+          type: integer
+        shiftType:
+          type: string
+        qualification:
+          type: string
+        assignedLocation:
+          type: string
+        status:
+          type: string
+          enum:
+            - Active
+            - InActive
