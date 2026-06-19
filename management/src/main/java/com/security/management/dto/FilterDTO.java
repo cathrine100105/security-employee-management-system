@@ -16,5 +16,5 @@ public class FilterDTO {
     private String shiftType;
     private String qualification;
     private String assignedLocation;
-    private com.security.management.model.FilterDTO.StatusEnum status;
+    private SecurityDTO.StatusEnum status;
 }

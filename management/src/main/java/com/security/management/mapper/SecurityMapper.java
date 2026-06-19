@@ -23,7 +23,4 @@ public class SecurityMapper {
         return modelMapper.map(securityEntity, SecurityDTO.class);
     }
 
-    public ModelMapper getModelMapper() {
-        return modelMapper;
-    }
 }

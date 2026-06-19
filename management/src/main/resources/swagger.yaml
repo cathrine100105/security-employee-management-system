@@ -24,6 +24,133 @@ paths:
               schema:
                 $ref: '#/components/schemas/SecurityDTO'
 
+    get:
+      tags:
+        - security
+
+      summary: Get all guards details
+
+      operationId: getAllGuards
+
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 5
+
+      responses:
+        '200':
+          description: Successful
+
+          content:
+            application/json:
+              schema:
+                type: array
+
+                items:
+                  $ref: '#/components/schemas/SecurityDTO'
+
+
+  /security/search:
+    post:
+      tags:
+        - security
+      summary: Search security with advanced filters
+      operationId: searchSecurity
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FilterDTO'
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SecurityDTO'
+
+
+  /security/{guardId}:
+    get:
+      tags:
+        - security
+      summary: Get security by ID
+      operationId: getsecurityById
+      parameters:
+        - name: guardId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecurityDTO'
+
+        '404':
+          description: security not found
+
+    put:
+      tags:
+        - security
+      summary: Update a security details
+      operationId: updateSecurity
+      parameters:
+        - name: guardId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SecurityDTO'
+      responses:
+        '200':
+          description: profile updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecurityDTO'
+
+    delete:
+      tags:
+        - security
+      summary: Delete profile
+      operationId: deleteProfile
+      parameters:
+        - name: guardId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Profile deleted successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Profile deleted successfully"
+
 
 components:
   schemas:

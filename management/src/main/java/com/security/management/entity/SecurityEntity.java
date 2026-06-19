@@ -1,5 +1,6 @@
 package com.security.management.entity;
 
+import com.security.management.model.SecurityDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,7 +30,7 @@ public class SecurityEntity {
     private LocalDate joinedDate;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private SecurityDTO.StatusEnum status;
 
     private String assignedLocation;
 }
