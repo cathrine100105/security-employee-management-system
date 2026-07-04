@@ -5,7 +5,10 @@ import Table from "../../ui/table/Table";
 import TableHeader from "../../ui/table/TableHeader";
 import TableRow from "../../ui/table/TableRow";
 import TableCell from "../../ui/table/TableCell";
-import TableButton from "../../ui/table/TableButton";
+import DeleteButton from "../../ui/button/DeleteButton";
+import EditButton from "../../ui/button/EditButton";
+
+import { useNavigate } from "react-router-dom";
 
 const EmployeeTable = ({ searchTerm }) => {
   const { data = [], isLoading, error } = useEmployees();
@@ -15,8 +18,6 @@ const EmployeeTable = ({ searchTerm }) => {
     return (
       employee.name?.toLowerCase().includes(search) ||
       employee.guardId?.toString().includes(search) ||
-      employee.mobile1?.includes(search) ||
-      employee.mobile2?.includes(search) ||
       employee.qualification?.toLowerCase().includes(search) ||
       employee.shiftType?.toLowerCase().includes(search) ||
       employee.assignedLocation?.toLowerCase().includes(search) ||
@@ -29,6 +30,12 @@ const EmployeeTable = ({ searchTerm }) => {
     if (window.confirm("Are you sure you want to delete this employee?")) {
       mutate(guardId);
     }
+  };
+
+  const navigate = useNavigate();
+
+  const handleEdit = (guardId) => {
+    navigate(`/add-employee/edit/${guardId}`);
   };
 
   if (isLoading) {
@@ -50,14 +57,10 @@ const EmployeeTable = ({ searchTerm }) => {
   if (error) return <p>Failed to load employees.</p>;
 
   return (
-    <div className="max-w-7xl mx-auto mt-10 px-6">
-      <div className="flex justify-between items-center mb-5">
-        <h2 className="text-2xl font-bold">Employee Dashboard</h2>
-
-        <span className="bg-blue-600 text-white px-4 py-2 rounded-lg">
+    <div className="max-w-7xl mx-auto mt-3">
+      {/* <span className="bg-gray-600 text-white px-4 py-2 rounded-lg">
           Total Employees : {filteredEmployees.length}
-        </span>
-      </div>
+        </span> */}
 
       <Table>
         <TableHeader
@@ -74,7 +77,11 @@ const EmployeeTable = ({ searchTerm }) => {
 
         <tbody>
           {filteredEmployees.map((employee, index) => (
-            <TableRow key={employee.guardId} index={index}>
+            <TableRow
+              key={employee.guardId}
+              index={index}
+              onClick={() => navigate(`/employees/${employee.guardId}`)}
+            >
               <TableCell>{employee.guardId}</TableCell>
               <TableCell>{employee.name}</TableCell>
 
@@ -84,10 +91,20 @@ const EmployeeTable = ({ searchTerm }) => {
 
               <TableCell>{employee.assignedLocation}</TableCell>
 
-              <TableCell>{employee.experience}</TableCell>
+              <TableCell>
+                {employee.experience ? `${employee.experience} Years` : "-"}
+              </TableCell>
 
               <TableCell>
-                <TableButton onClick={() => handleDelete(employee.guardId)} />
+                <div
+                  className="flex justify-center gap-2"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <EditButton onClick={() => handleEdit(employee.guardId)} />
+                  <DeleteButton
+                    onClick={() => handleDelete(employee.guardId)}
+                  />
+                </div>
               </TableCell>
             </TableRow>
           ))}

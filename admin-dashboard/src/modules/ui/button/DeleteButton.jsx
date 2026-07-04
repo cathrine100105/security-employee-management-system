@@ -1,6 +1,6 @@
 import { Trash2 } from "lucide-react";
 
-const TableButton = ({ onClick }) => {
+const DeleteButton = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
@@ -8,20 +8,21 @@ const TableButton = ({ onClick }) => {
         flex
         items-center
         gap-2
-        mx-auto
-        bg-red-500
-        hover:bg-red-600
+        bg-red-400
+        hover:bg-red-500
         text-white
         px-4
         py-2
         rounded-lg
-        transition
+        shadow-md
+        transition-all
+        duration-200
       "
     >
-      <Trash2 size={18} />
+      <Trash2 size={16} />
       Delete
     </button>
   );
 };
 
-export default TableButton;
+export default DeleteButton;

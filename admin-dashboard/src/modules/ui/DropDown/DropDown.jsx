@@ -1,7 +1,7 @@
-const SelectField = ({ label, name, value, onChange, options }) => {
+const DropDown = ({ label, name, value, onChange, options }) => {
   return (
     <div className="flex flex-col gap-2">
-      <label className="font-medium text-gray-700">{label}</label>
+      <label className="font-medium text-gray-700 text-lg">{label}</label>
 
       <select
         name={name}
@@ -30,4 +30,4 @@ const SelectField = ({ label, name, value, onChange, options }) => {
   );
 };
 
-export default SelectField;
+export default DropDown;

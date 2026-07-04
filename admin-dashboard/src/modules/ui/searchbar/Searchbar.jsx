@@ -1,14 +1,15 @@
 const SearchBar = ({ searchTerm, setSearchTerm }) => {
   return (
-    <div className="w-full max-w-md px-6">
+    <div className="w-full max-w-md">
       <input
         type="text"
-        placeholder="Search by name, guard Id,..."
+        placeholder="Search by Guard ID, Name, Qualification, Location..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         className="
-          w-full
-          px-4
+          w-100
+          h-15
+          px-3
           py-2
           border
           border-gray-300

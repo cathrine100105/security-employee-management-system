@@ -32,3 +32,14 @@ export const searchEmployees = async (keyword) => {
 
   return response.data;
 };
+
+export const updateEmployee = async ({ guardId, employee }) => {
+  const response = await api.put(`/security/${guardId}`, employee);
+
+  return response.data;
+};
+
+export const getEmployeeById = async (guardId) => {
+  const response = await api.get(`/security/${guardId}`);
+  return response.data;
+};

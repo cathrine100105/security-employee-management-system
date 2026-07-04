@@ -1,9 +1,13 @@
-const TableRow = ({ children, index }) => {
+const TableRow = ({ children, index, onClick }) => {
   return (
     <tr
-      className={`transition duration-200 hover:bg-blue-50 ${
-        index % 2 === 0 ? "bg-white" : "bg-gray-50"
-      }`}
+      onClick={onClick}
+      className={`
+        cursor-pointer
+        transition-colors
+        hover:bg-blue-50
+        ${index % 2 === 0 ? "bg-white" : "bg-gray-50"}
+      `}
     >
       {children}
     </tr>
