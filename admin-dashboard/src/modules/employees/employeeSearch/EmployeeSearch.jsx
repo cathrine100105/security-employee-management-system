@@ -10,7 +10,6 @@ const EmployeeSearch = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         <InputField
-          placeholder="Search by Name, Guard ID, Mobile, Location..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

@@ -1,14 +1,14 @@
-import { useState } from "react";
-import SearchBar from "../../modules/ui/searchbar/Searchbar";
-import EmployeeTable from "../../modules/employees/employeeTable/EmployeeTable";
+// import { useState } from "react";
+// import SearchBar from "../../modules/ui/searchbar/Searchbar";
+// import EmployeeTable from "../../modules/employees/employeeTable/EmployeeTable";
 const Employees = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  //const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      {/* <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-      <EmployeeTable searchTerm={searchTerm} />
+      <EmployeeTable searchTerm={searchTerm} /> */}
     </>
   );
 };

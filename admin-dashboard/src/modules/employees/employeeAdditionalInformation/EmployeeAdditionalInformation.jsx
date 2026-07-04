@@ -1,10 +1,21 @@
 import InputField from "../../ui/inputField/InputField";
-import SelectField from "../../ui/selectField/SelectField";
+import SelectField from "../../ui/DropDown/DropDown";
 
 import { useCreateEmployee } from "../../../hooks/useCreateEmployee";
+import { useUpdateEmployee } from "../../../hooks/useUpdateEmployee";
+import { useNavigate } from "react-router-dom";
 
-const EmployeeAdditionalInformation = ({ employee, setEmployee }) => {
-  const { mutate } = useCreateEmployee();
+const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
+  const navigate = useNavigate();
+  const { mutate: createEmployee } = useCreateEmployee(() => {
+    alert("Employee Added Successfully");
+    navigate("/");
+  });
+
+  const { mutate: updateEmployee } = useUpdateEmployee(() => {
+    alert("Employee Updated Successfully");
+    navigate("/");
+  });
 
   const handleChange = (e) => {
     setEmployee({
@@ -14,12 +25,20 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee }) => {
   };
 
   const handleSave = () => {
-    mutate(employee);
+    if (guardId) {
+      updateEmployee({
+        guardId,
+
+        employee,
+      });
+    } else {
+      createEmployee(employee);
+    }
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 px-6 pb-6">
+    <div className="max-w-4xl mx-auto mt-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <SelectField
           label="Qualification"
           name="qualification"
@@ -58,12 +77,12 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee }) => {
         />
       </div>
 
-      <div className="flex justify-center mt-5">
+      <div className="flex justify-center mt-7">
         <button
           onClick={handleSave}
-          className="bg-blue-600 text-white p-3 rounded-lg"
+          className="bg-blue-400 text-white p-3 rounded-lg"
         >
-          Save Employee
+          {guardId ? "Update Employee" : "Save Employee"}
         </button>
       </div>
     </div>

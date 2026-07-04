@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createEmployee } from "../api/securityApi";
+import { updateEmployee } from "../api/securityApi";
 
-export const useCreateEmployee = (onSuccessCallback) => {
+export const useUpdateEmployee = (onSuccessCallback) => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: createEmployee,
+    mutationFn: updateEmployee,
 
     onSuccess: () => {
       queryClient.invalidateQueries({
