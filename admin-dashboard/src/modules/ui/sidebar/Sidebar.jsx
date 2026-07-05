@@ -1,16 +1,16 @@
 import { NavLink } from "react-router-dom";
 
 const navItems = [
-  { name: "Dashboard", path: "/" },
+  { name: "DASHBOARD", path: "/" },
   // { name: "Employees", path: "/employees" },
-  { name: "Add New Employee", path: "/add-employee" },
+  { name: "ADD NEW EMPLOYEE", path: "/add-employee" },
 ];
 
 const Sidebar = () => {
   return (
     <div className="fixed left-0 top-0 h-screen w-64 bg-gray-600 text-white">
-      <div className="p-6 border-b border-slate-700">
-        <h3 className="text-2xl font-bold">Guard Track</h3>
+      <div className="p-6 border-b border-slate-700 justify-center items-center">
+        <h3 className="text-2xl italic tracking-widest">GUARD TRACK</h3>
       </div>
 
       <nav className="mt-4">
