@@ -46,7 +46,7 @@ The application focuses on:
 - Total Employees Count
 - Day Shift Employees
 - Night Shift Employees
-- Recent Employees Table
+- Employees Table
 
 ---
 
@@ -60,8 +60,8 @@ Admin can add:
 - Qualification
 - Shift Type
 - Experience
-- Mobile Number 1
-- Mobile Number 2
+- Primary Contact Number
+- Secondary Contact Number
 
 ---
 
@@ -88,10 +88,12 @@ The admin can search employee data instantly without page reload.
 
 ## Frontend
 - React.js
-- Bootstrap 5
+- Tailwind CSS
 - HTML5
 - CSS3
 - JavaScript
+- Tanstack Query
+- Axios
 
 ---
 
