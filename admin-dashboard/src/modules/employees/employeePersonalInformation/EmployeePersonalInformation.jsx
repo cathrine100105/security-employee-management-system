@@ -2,58 +2,75 @@ import InputField from "../../ui/inputField/InputField";
 
 const EmployeePersonalInformation = ({ employee, setEmployee }) => {
   const handleChange = (e) => {
+    const { name, value } = e.target;
+
     setEmployee({
       ...employee,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto font-bold">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <InputField
-          label="Name"
-          name="name"
-          value={employee.name}
-          onChange={handleChange}
-        />
+        <div>
+          <InputField
+            label="NAME"
+            name="name"
+            value={employee.name}
+            onChange={handleChange}
+          />
+        </div>
 
-        <InputField
-          label="Address"
-          name="address"
-          value={employee.address}
-          onChange={handleChange}
-        />
+        <div>
+          <InputField
+            label="DATE OF BIRTH"
+            type="date"
+            name="dob"
+            value={employee.dob}
+            onChange={handleChange}
+            max={new Date().toISOString().split("T")[0]}
+          />
+        </div>
 
-        <InputField
-          label="Date Of Birth"
-          type="date"
-          name="dob"
-          value={employee.dob}
-          onChange={handleChange}
-        />
+        <div>
+          <InputField
+            label="AGE"
+            type="number"
+            name="age"
+            value={employee.age}
+            onChange={handleChange}
+          />
+        </div>
 
-        <InputField
-          label="Age"
-          type="number"
-          name="age"
-          value={employee.age}
-          onChange={handleChange}
-        />
+        <div>
+          <InputField
+            label="ADDRESS"
+            name="address"
+            value={employee.address}
+            onChange={handleChange}
+          />
+        </div>
 
-        <InputField
-          label="Mobile Number 1"
-          name="mobile1"
-          value={employee.mobile1}
-          onChange={handleChange}
-        />
+        <div>
+          <InputField
+            label="PRIMARY CONTACT No."
+            name="mobile1"
+            value={employee.mobile1}
+            onChange={handleChange}
+            maxLength={10}
+          />
+        </div>
 
-        <InputField
-          label="Mobile Number 2"
-          name="mobile2"
-          value={employee.mobile2}
-          onChange={handleChange}
-        />
+        <div>
+          <InputField
+            label="SECONDARY CONTACT No."
+            name="mobile2"
+            value={employee.mobile2}
+            onChange={handleChange}
+            maxLength={10}
+          />
+        </div>
       </div>
     </div>
   );

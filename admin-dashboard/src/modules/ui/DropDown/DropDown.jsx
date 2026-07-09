@@ -1,7 +1,9 @@
 const DropDown = ({ label, name, value, onChange, options }) => {
   return (
     <div className="flex flex-col gap-2">
-      <label className="font-medium text-gray-700 text-lg">{label}</label>
+      <label className="font-bold italic text-gray-700 text-lg tracking-widest">
+        {label}
+      </label>
 
       <select
         name={name}
