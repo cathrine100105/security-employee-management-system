@@ -4,7 +4,8 @@ A modern Security Employee Management System built using:
 
 - React.js
 - JavaScript
-- Tailwind
+- HTML5
+- Tailwind CSS
 
 This project is designed for managing security employee records in an organization.  
 The system allows admin users to:
