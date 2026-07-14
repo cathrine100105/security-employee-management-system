@@ -269,6 +269,34 @@ paths:
                 items:
                   $ref: '#/components/schemas/SecurityDTO'
 
+
+
+  /auth/register:
+    post:
+      tags:
+        - authentication
+      summary: Register a new user
+      operationId: registerUser
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequestDTO'
+
+      responses:
+        '201':
+          description: Registration Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterResponseDTO'
+
+        '400':
+          description: Email already exists
+
+
   /auth/login:
     post:
       tags:
@@ -479,3 +507,45 @@ components:
         message:
           type: string
           example: Login Successful
+
+
+    RegisterRequestDTO:
+      type: object
+      required:
+        - email
+        - password
+        - role
+      properties:
+        email:
+          type: string
+          format: email
+          example: anu@gmail.com
+
+        password:
+          type: string
+          format: password
+          example: anu123
+
+        role:
+          type: string
+          example: USER
+
+
+    RegisterResponseDTO:
+      type: object
+      properties:
+        userId:
+          type: integer
+          example: 1
+
+        email:
+          type: string
+          example: anu@gmail.com
+
+        role:
+          type: string
+          example: USER
+
+        message:
+          type: string
+          example: Registration Successful
