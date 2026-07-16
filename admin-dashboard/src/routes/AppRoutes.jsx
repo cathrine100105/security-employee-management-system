@@ -4,11 +4,20 @@ import AddEmployee from "../pages/addEmployee/AddEmployee";
 //import Employees from "../pages/employees/Employees";
 import Layout from "../modules/ui/layout/Layout";
 import EmployeeDetails from "../pages/employeeDetails/EmployeeDetails";
+import Login from "../pages/login/Login";
+import AdminRoute from "./AdminRoute";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
+        <Route path="/login" element={<Login />} />
+        <Route
+          element={
+            <AdminRoute>
+              <Layout />
+            </AdminRoute>
+          }
+        >
           <Route path="/" element={<Dashboard />} />
           <Route path="/add-employee" element={<AddEmployee />} />
           <Route path="/add-employee/edit/:guardId" element={<AddEmployee />} />
