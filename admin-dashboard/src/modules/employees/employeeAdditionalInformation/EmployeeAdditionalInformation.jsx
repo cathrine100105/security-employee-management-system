@@ -25,26 +25,24 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
   };
 
   const handleSave = () => {
-    
-
     const mobileRegex = /^\d{10}$/;
 
-  if (!mobileRegex.test(employee.mobile1)) {
-    alert("Primary Contact Number must be exactly 10 digits.");
-    return;
-  }
+    if (!mobileRegex.test(employee.mobile1)) {
+      alert("Primary Contact Number must be exactly 10 digits.");
+      return;
+    }
 
-  if (employee.mobile2 && !mobileRegex.test(employee.mobile2)) {
-    alert("Secondary Contact Number must be exactly 10 digits.");
-    return;
-  }
+    if (employee.mobile2 && !mobileRegex.test(employee.mobile2)) {
+      alert("Secondary Contact Number must be exactly 10 digits.");
+      return;
+    }
 
-  if (new Date(employee.dob) > new Date()) {
-    alert("Date of Birth cannot be a future date.");
-    return;
-  }
+    if (new Date(employee.dob) > new Date()) {
+      alert("Date of Birth cannot be a future date.");
+      return;
+    }
 
-  if (guardId) {
+    if (guardId) {
       updateEmployee({
         guardId,
 
@@ -56,9 +54,8 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-5 font-bold">
+    <div className="max-w-4xl mx-auto mt-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-
         <InputField
           label="LOCATION"
           name="assignedLocation"
@@ -95,7 +92,6 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
           options={["Day Shift", "Night Shift", "Rotational Shift"]}
         />
 
-        
         <SelectField
           label="STATUS"
           name="status"

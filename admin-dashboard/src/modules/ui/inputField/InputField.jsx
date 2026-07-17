@@ -10,7 +10,7 @@ const InputField = ({
     <div className="text-lg flex flex-col gap-2">
       <label
         htmlFor={name}
-        className="font-bold italic text-gray-700 text-lg tracking-widest"
+        className="italic text-gray-700 text-lg tracking-widest"
       >
         {label}
       </label>

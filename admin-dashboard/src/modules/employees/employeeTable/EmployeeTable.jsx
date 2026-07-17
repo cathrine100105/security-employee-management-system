@@ -65,7 +65,7 @@ const EmployeeTable = ({ searchTerm }) => {
       <Table>
         <TableHeader
           headers={[
-            "Quard Id",
+            "Guard Id",
             "Name",
             "Qualification",
             "Shift",
