@@ -4,7 +4,7 @@ const AdminRoute = ({ children }) => {
   const user = localStorage.getItem("user");
 
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/authentication" replace />;
   }
 
   return children;

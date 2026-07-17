@@ -34,7 +34,7 @@ const AddEmployee = () => {
           <BackButton />
         </div>
 
-        <h1 className="text-3xl font-bold tracking-wide">
+        <h1 className="text-3xl tracking-wide">
           {guardId ? "UPDATE EMPLOYEE" : "ADD EMPLOYEE"}
         </h1>
       </div>

@@ -74,7 +74,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="mt-5 mb-3">
-        <h2 className="text-2xl font-bold">EMPLOYEE DASHBOARD</h2>
+        <h2 className="text-2xl">EMPLOYEE DASHBOARD</h2>
       </div>
       <div className="flex justify-between items-center">
         <EmployeeTable searchTerm={searchTerm} />
