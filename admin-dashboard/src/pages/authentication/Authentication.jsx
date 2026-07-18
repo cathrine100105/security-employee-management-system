@@ -5,10 +5,10 @@ import { Mail, Lock, UserCog } from "lucide-react";
 import { useLogin } from "../../hooks/useLogin";
 import { useRegister } from "../../hooks/useRegister";
 
-import AuthButton from "../../modules/auth/authButton";
+import AuthButton from "../../modules/auth/AuthButton";
 import AuthInput from "../../modules/auth/AuthInput";
 import AuthCard from "../../modules/auth/AuthCard";
-import AuthLayout from "../../modules/auth/authLayout";
+import AuthLayout from "../../modules/auth/AuthLayout"
 
 const Authentication = () => {
   const navigate = useNavigate();
