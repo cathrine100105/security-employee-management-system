@@ -57,10 +57,8 @@ const EmployeeTable = ({ searchTerm }) => {
   if (error) return <p>Failed to load employees.</p>;
 
   return (
-    <div className="max-w-7xl mx-auto mt-3">
-      {/* <span className="bg-gray-600 text-white px-4 py-2 rounded-lg">
-          Total Employees : {filteredEmployees.length}
-        </span> */}
+    <div className="max-w-7xl mx-auto mt-3 overflow-x-auto">
+
 
       <Table>
         <TableHeader

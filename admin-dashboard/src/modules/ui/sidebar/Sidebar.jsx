@@ -9,7 +9,7 @@ const navItems = [
 
 const Sidebar = () => {
   return (
-    <div className="fixed left-0 top-0 h-screen w-64 bg-gray-600 text-white flex flex-col">
+    <div className="hidden lg:flex fixed left-0 top-0 h-screen w-64 bg-gray-600 text-white flex-col">
       <div className="p-6 border-b border-slate-700 justify-center items-center">
         <h3 className="text-2xl italic tracking-widest">GUARD TRACK</h3>
       </div>
