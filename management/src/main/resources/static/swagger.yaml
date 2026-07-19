@@ -9,6 +9,8 @@ paths:
     post:
       tags:
         - security
+      security:
+        - bearerAuth: []
       summary: Add a new guard
       operationId: createGuardDetails
       requestBody:
@@ -28,6 +30,8 @@ paths:
     get:
       tags:
         - security
+      security:
+        - bearerAuth: []
       summary: Get all guards details
       operationId: getAllGuards
 
@@ -110,6 +114,8 @@ paths:
     post:
       tags:
         - security
+      security:
+        - bearerAuth: []
       summary: Search security with advanced filters
       operationId: searchSecurity
       requestBody:
@@ -132,6 +138,8 @@ paths:
     get:
       tags:
         - security
+      security:
+        - bearerAuth: []
       summary: Get security by ID
       operationId: getsecurityById
       parameters:
@@ -155,6 +163,8 @@ paths:
     put:
       tags:
         - security
+      security:
+        - bearerAuth: []
       summary: Update a security details
       operationId: updateSecurity
 
@@ -183,6 +193,8 @@ paths:
     delete:
       tags:
         - security
+      security:
+        - bearerAuth: []
       summary: Delete profile
       operationId: deleteProfile
 
@@ -202,7 +214,36 @@ paths:
                 type: string
                 example: "Profile deleted successfully"
 
+  /auth/google:
+    post:
+      tags:
+        - authentication
+      summary: Login with Google
+      operationId: googleLogin
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleLoginRequestDTO'
+
+      responses:
+        '200':
+          description: Google Login Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponseDTO'
+
 components:
+  securitySchemes:
+
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
   schemas:
 
     SecurityDTO:
@@ -280,7 +321,7 @@ components:
       type: object
       properties:
         userId:
-          type: long
+          type: integer
           example: 1
 
         email:
@@ -290,6 +331,21 @@ components:
         role:
           type: string
           example: ADMIN
+
+        provider:
+          type: string
+          example: LOCAL
+
+        name:
+          type: string
+          example: Cathrine Praba
+
+        picture:
+          type: string
+          example: https://lh3.googleusercontent.com/a/....
+
+        token:
+          type: string
 
         message:
           type: string
@@ -333,6 +389,21 @@ components:
           type: string
           example: USER
 
+        provider:
+          type: string
+          example: LOCAL
+
         message:
           type: string
           example: Registration Successful
+
+
+    GoogleLoginRequestDTO:
+      type: object
+      required:
+        - idToken
+      properties:
+        idToken:
+          type: string
+          description: Google ID Token received from the frontend
+          example: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...

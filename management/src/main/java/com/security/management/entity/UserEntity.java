@@ -15,15 +15,26 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-
     @Column(nullable = false, unique = true)
     private String email;
 
-
-    @Column(nullable = false)
+    @Column
     private String password;
-
 
     @Column(nullable = false)
     private String role;
+
+    @Column
+    private String provider;
+
+    @Column
+    private String googleId;
+
+    @Column
+    private String name;
+
+    @Column(length = 500)
+    private String picture;
+
+    private String token;
 }
