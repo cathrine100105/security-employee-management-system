@@ -54,8 +54,8 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-5">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div className="w-full max-w-4xl mx-auto mt-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
         <InputField
           label="LOCATION"
           name="assignedLocation"
@@ -101,10 +101,10 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
         />
       </div>
 
-      <div className="flex justify-center mt-7">
+      <div className="flex justify-center mt-6 md:mt-7">
         <button
+          className="w-full sm:w-auto bg-blue-400 text-white px-6 py-3 rounded-lg"
           onClick={handleSave}
-          className="bg-blue-400 text-white p-3 rounded-lg"
         >
           {guardId ? "Update Employee" : "Save Employee"}
         </button>
