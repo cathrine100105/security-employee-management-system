@@ -9,6 +9,8 @@ paths:
     post:
       tags:
         - security
+      security:
+        - bearerAuth: []
       summary: Add a new guard
       operationId: createGuardDetails
       requestBody:
@@ -28,6 +30,8 @@ paths:
     get:
       tags:
         - security
+      security:
+        - bearerAuth: []
       summary: Get all guards details
       operationId: getAllGuards
 
@@ -110,6 +114,8 @@ paths:
     post:
       tags:
         - security
+      security:
+        - bearerAuth: []
       summary: Search security with advanced filters
       operationId: searchSecurity
       requestBody:
@@ -132,6 +138,8 @@ paths:
     get:
       tags:
         - security
+      security:
+        - bearerAuth: []
       summary: Get security by ID
       operationId: getsecurityById
       parameters:
@@ -155,6 +163,8 @@ paths:
     put:
       tags:
         - security
+      security:
+        - bearerAuth: []
       summary: Update a security details
       operationId: updateSecurity
 
@@ -183,6 +193,8 @@ paths:
     delete:
       tags:
         - security
+      security:
+        - bearerAuth: []
       summary: Delete profile
       operationId: deleteProfile
 
@@ -202,7 +214,101 @@ paths:
                 type: string
                 example: "Profile deleted successfully"
 
+  /auth/google:
+    post:
+      tags:
+        - authentication
+      summary: Login with Google
+      operationId: googleLogin
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleLoginRequestDTO'
+
+      responses:
+        '200':
+          description: Google Login Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponseDTO'
+
+
+  /auth/forgot-password:
+    post:
+      tags:
+        - authentication
+      summary: Forgot password request
+      operationId: forgotPassword
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordRequestDTO'
+
+      responses:
+        '200':
+          description: Reset token generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Reset token generated successfully
+
+                  token:
+                    type: string
+                    example: 7c8d9f2a-xxxx-xxxx
+
+        '404':
+          description: Email not found
+
+
+
+  /auth/reset-password:
+    post:
+      tags:
+        - authentication
+      summary: Reset password using token
+      operationId: resetPassword
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequestDTO'
+
+      responses:
+        '200':
+          description: Password reset successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Password updated successfully
+
+        '400':
+          description: Invalid or expired token
+
 components:
+  securitySchemes:
+
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
   schemas:
 
     SecurityDTO:
@@ -280,7 +386,7 @@ components:
       type: object
       properties:
         userId:
-          type: long
+          type: integer
           example: 1
 
         email:
@@ -290,6 +396,21 @@ components:
         role:
           type: string
           example: ADMIN
+
+        provider:
+          type: string
+          example: LOCAL
+
+        name:
+          type: string
+          example: Cathrine Praba
+
+        picture:
+          type: string
+          example: https://lh3.googleusercontent.com/a/....
+
+        token:
+          type: string
 
         message:
           type: string
@@ -333,6 +454,52 @@ components:
           type: string
           example: USER
 
+        provider:
+          type: string
+          example: LOCAL
+
         message:
           type: string
           example: Registration Successful
+
+
+    GoogleLoginRequestDTO:
+      type: object
+      required:
+        - idToken
+      properties:
+        idToken:
+          type: string
+          description: Google ID Token received from the frontend
+          example: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+
+
+    ForgotPasswordRequestDTO:
+      type: object
+      required:
+        - email
+
+      properties:
+        email:
+          type: string
+          format: email
+          example: admin@gmail.com
+
+
+
+    ResetPasswordRequestDTO:
+      type: object
+      required:
+        - token
+        - newPassword
+
+      properties:
+
+        token:
+          type: string
+          example: 7c8d9f2a-xxxx-xxxx
+
+        newPassword:
+          type: string
+          format: password
+          example: newPassword123
