@@ -12,15 +12,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.security.management.email.EmailService;
 
 @RestController
 @AllArgsConstructor
 public class AuthController implements AuthApi {
 
+    private final EmailService emailService;
     private final UserService userService;
     private final GoogleAuthService googleAuthService;
     private final JwtService jwtService;
+
+
+    @Override
+    public ResponseEntity<ForgotPassword200Response> forgotPassword(
+            ForgotPasswordRequestDTO forgotPasswordRequestDTO) {
+
+        ForgotPassword200Response response =
+                userService.forgotPassword(forgotPasswordRequestDTO.getEmail());
+
+        return ResponseEntity.ok(response);
+    }
 
     @Override
     public ResponseEntity<LoginResponseDTO> googleLogin(
@@ -114,5 +126,18 @@ public class AuthController implements AuthApi {
         response.setMessage("Registration Successful");
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @Override
+    public ResponseEntity<ResetPassword200Response> resetPassword(
+            ResetPasswordRequestDTO resetPasswordRequestDTO) {
+
+        ResetPassword200Response response =
+                userService.resetPassword(
+                        resetPasswordRequestDTO.getToken(),
+                        resetPasswordRequestDTO.getNewPassword()
+                );
+
+        return ResponseEntity.ok(response);
     }
 }

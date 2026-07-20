@@ -3,6 +3,8 @@ package com.security.management.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name="users")
 @Data
@@ -37,4 +39,10 @@ public class UserEntity {
     private String picture;
 
     private String token;
+
+    @Column
+    private String resetToken;
+
+    @Column
+    private LocalDateTime tokenExpiry;
 }

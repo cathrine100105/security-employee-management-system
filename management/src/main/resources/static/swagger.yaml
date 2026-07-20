@@ -236,6 +236,71 @@ paths:
               schema:
                 $ref: '#/components/schemas/LoginResponseDTO'
 
+
+  /auth/forgot-password:
+    post:
+      tags:
+        - authentication
+      summary: Forgot password request
+      operationId: forgotPassword
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordRequestDTO'
+
+      responses:
+        '200':
+          description: Reset token generated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Reset token generated successfully
+
+                  token:
+                    type: string
+                    example: 7c8d9f2a-xxxx-xxxx
+
+        '404':
+          description: Email not found
+
+
+
+  /auth/reset-password:
+    post:
+      tags:
+        - authentication
+      summary: Reset password using token
+      operationId: resetPassword
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetPasswordRequestDTO'
+
+      responses:
+        '200':
+          description: Password reset successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Password updated successfully
+
+        '400':
+          description: Invalid or expired token
+
 components:
   securitySchemes:
 
@@ -407,3 +472,34 @@ components:
           type: string
           description: Google ID Token received from the frontend
           example: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+
+
+    ForgotPasswordRequestDTO:
+      type: object
+      required:
+        - email
+
+      properties:
+        email:
+          type: string
+          format: email
+          example: admin@gmail.com
+
+
+
+    ResetPasswordRequestDTO:
+      type: object
+      required:
+        - token
+        - newPassword
+
+      properties:
+
+        token:
+          type: string
+          example: 7c8d9f2a-xxxx-xxxx
+
+        newPassword:
+          type: string
+          format: password
+          example: newPassword123
