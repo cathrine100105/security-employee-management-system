@@ -75,7 +75,8 @@ public class SecurityConfig {
 
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:8057",
-                "http://localhost:5173"
+                "http://localhost:5173",
+                "https://guardtrack-ruby.vercel.app"
         ));
 
         configuration.setAllowedMethods(List.of(
