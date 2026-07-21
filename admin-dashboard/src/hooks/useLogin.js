@@ -8,6 +8,10 @@ export const useLogin = (onSuccess) => {
     onSuccess: (data) => {
       console.log("Login Success", data);
 
+      // Store JWT Token
+      localStorage.setItem("token", data.token);
+
+      // Store User Details
       localStorage.setItem("user", JSON.stringify(data));
 
       if (onSuccess) {
@@ -17,7 +21,11 @@ export const useLogin = (onSuccess) => {
 
     onError: (error) => {
       console.log("Login Error", error);
-      alert("Invalid Email or Password");
+
+      const message =
+        error.response?.data?.message || "Invalid Email or Password";
+
+      alert(message);
     },
   });
 };
