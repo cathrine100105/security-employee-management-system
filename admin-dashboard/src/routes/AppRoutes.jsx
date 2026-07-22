@@ -6,11 +6,15 @@ import Layout from "../modules/ui/layout/Layout";
 import EmployeeDetails from "../pages/employeeDetails/EmployeeDetails";
 import Authentication from "../pages/authentication/Authentication";
 import AdminRoute from "./AdminRoute";
+import ForgotPassword from "../modules/auth/ForgotPassword";
+import ResetPassword from "../modules/auth/ResetPassword";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/authentication" element={<Authentication />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route
           element={
             <AdminRoute>

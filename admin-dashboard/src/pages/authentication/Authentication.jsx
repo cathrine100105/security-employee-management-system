@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Mail, Lock, UserCog } from "lucide-react";
+import { Mail, Lock } from "lucide-react";
 
 import { useLogin } from "../../hooks/useLogin";
 import { useRegister } from "../../hooks/useRegister";
@@ -8,7 +8,7 @@ import { useRegister } from "../../hooks/useRegister";
 import AuthButton from "../../modules/auth/AuthButton";
 import AuthInput from "../../modules/auth/AuthInput";
 import AuthCard from "../../modules/auth/AuthCard";
-import AuthLayout from "../../modules/auth/AuthLayout"
+import AuthLayout from "../../modules/auth/AuthLayout";
 
 const Authentication = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const Authentication = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    role: "",
+    role: "ADMIN",
   });
 
   const { mutate: loginMutate, isPending: loginLoading } = useLogin(() => {
@@ -28,12 +28,13 @@ const Authentication = () => {
   const { mutate: registerMutate, isPending: registerLoading } = useRegister(
     () => {
       alert("Registration Successful");
+
       setIsLogin(true);
 
       setFormData({
         email: "",
         password: "",
-        role: "",
+        role: "USER",
       });
     },
   );
@@ -91,15 +92,34 @@ const Authentication = () => {
             onChange={handleChange}
           />
 
+          {isLogin && (
+            <div className="flex justify-end -mt-2">
+              <button
+                type="button"
+                onClick={() => navigate("/forgot-password")}
+                className="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+              >
+                Forgot Password?
+              </button>
+            </div>
+          )}
+
           {!isLogin && (
-            <AuthInput
-              label="Role"
-              name="role"
-              type="text"
-              icon={UserCog}
-              value={formData.role}
-              onChange={handleChange}
-            />
+            <div className="flex flex-col gap-2">
+              <label className="absolute transition-all duration-200 pointer-events-none">
+                Role
+              </label>
+
+              <select
+                name="role"
+                value={formData.role}
+                onChange={handleChange}
+                className="mt-7 pr-5 text-slate-400 transition hover:text-indigo-600"
+              >
+                <option value="ADMIN">Admin</option>
+                <option value="USER">User</option>
+              </select>
+            </div>
           )}
 
           <AuthButton loading={isLogin ? loginLoading : registerLoading}>
