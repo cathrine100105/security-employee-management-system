@@ -97,7 +97,7 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
           name="status"
           value={employee.status}
           onChange={handleChange}
-          options={["Active", "Inactive"]}
+          options={["Active", "InActive"]}
         />
       </div>
 
