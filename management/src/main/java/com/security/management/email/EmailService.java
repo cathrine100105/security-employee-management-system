@@ -13,22 +13,23 @@ public class EmailService {
 
     public void sendResetPasswordEmail(String toEmail, String resetLink) {
 
-        SimpleMailMessage message = new SimpleMailMessage();
+        try {
+            SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setTo(toEmail);
-        message.setSubject("Reset Your Password");
+            message.setTo(toEmail);
+            message.setSubject("Reset Your Password");
+            message.setText(
+                    "Hello,\n\n" +
+                            "Click the link below:\n\n" +
+                            resetLink
+            );
 
-        message.setText(
-                "Hello,\n\n" +
-                        "You requested to reset your password.\n\n" +
-                        "Click the link below to reset your password:\n\n" +
-                        resetLink +
-                        "\n\nThis link will expire in 15 minutes.\n\n" +
-                        "If you didn't request this, please ignore this email.\n\n" +
-                        "Regards,\n" +
-                        "Security Employee Management System"
-        );
+            mailSender.send(message);
+            System.out.println("Email sent successfully.");
 
-        mailSender.send(message);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Email sending failed", e);
+        }
     }
 }
