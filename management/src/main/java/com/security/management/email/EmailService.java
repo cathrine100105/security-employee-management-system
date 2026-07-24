@@ -24,27 +24,26 @@ public class EmailService {
 
     public void sendResetPasswordEmail(String toEmail, String resetLink) {
 
+        System.out.println("Sending email to: " + toEmail);
+        System.out.println("Reset Link: " + resetLink);
+
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setTo(toEmail);
+        message.setSubject("Reset Your Password");
+
+        message.setText(
+                "Hello,\n\n" +
+                        "Click below:\n\n" +
+                        resetLink
+        );
+
         try {
-            SimpleMailMessage message = new SimpleMailMessage();
-
-            message.setTo(toEmail);
-            message.setSubject("Reset Your Password");
-            message.setText(
-                    "Hello,\n\n" +
-                            "Click the link below:\n\n" +
-                            resetLink
-            );
-            System.out.println("Host: " + host);
-            System.out.println("Port: " + port);
-            System.out.println("Username: " + username);
-
-
             mailSender.send(message);
-            System.out.println("Email sent successfully.");
-
+            System.out.println("Email sent successfully");
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("Email sending failed", e);
         }
+
     }
 }
