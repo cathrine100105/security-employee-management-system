@@ -25,15 +25,17 @@ const Dashboard = () => {
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center h-80 gap-5">
-        <Shield className="w-16 h-16 text-blue-600 animate-pulse" />
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="flex flex-col items-center gap-5">
+          <Shield className="w-16 h-16 text-blue-600 animate-pulse" />
 
-        <div className="text-center">
-          <h2 className="text-xl font-bold text-gray-800">
-            Loading Security System
-          </h2>
+          <div className="text-center">
+            <h2 className="text-xl font-bold text-gray-800">
+              Loading Security System
+            </h2>
 
-          <p className="text-gray-500">Retrieving employee records...</p>
+            <p className="text-gray-500">Retrieving employee records...</p>
+          </div>
         </div>
       </div>
     );
@@ -74,7 +76,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="mt-5 mb-3">
-        <h2 className="text-2xl font-bold">EMPLOYEE DASHBOARD</h2>
+        <h2 className="text-2xl">EMPLOYEE DASHBOARD</h2>
       </div>
       <div className="flex justify-between items-center">
         <EmployeeTable searchTerm={searchTerm} />

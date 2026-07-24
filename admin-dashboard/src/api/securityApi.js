@@ -13,14 +13,14 @@ export const getEmployees = async () => {
   return response.data;
 };
 export const createEmployee = async (employee) => {
-  const response = await api.post("/security", employee);
+  const response = await api.post("/api/security", employee);
 
   console.log("POST Response:", response.data);
 
   return response.data;
 };
 export const deleteEmployee = async (guardId) => {
-  const response = await api.delete(`/security/${guardId}`);
+  const response = await api.delete(`/api/security/${guardId}`);
   return response.data;
 };
 export const searchEmployees = async (keyword) => {
