@@ -11,7 +11,7 @@ const EmployeeDetails = () => {
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center h-80 gap-5">
+      <div className="flex flex-col items-center justify-center h-60 md:h-80 gap-4 md:gap-5 px-4">
         <Shield className="w-16 h-16 text-blue-600 animate-pulse" />
 
         <div className="text-center">
@@ -29,7 +29,7 @@ const EmployeeDetails = () => {
     <>
       <BackButton />
 
-      <div className="max-w-5xl mx-auto py-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 md:py-6">
         <EmployeeCard employee={data} />
       </div>
     </>

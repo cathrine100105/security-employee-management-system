@@ -11,8 +11,8 @@ const EmployeePersonalInformation = ({ employee, setEmployee }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto font-bold">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div className="w-full max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
         <div>
           <InputField
             label="NAME"
