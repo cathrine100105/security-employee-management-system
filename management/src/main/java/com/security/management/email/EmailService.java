@@ -30,6 +30,8 @@ public class EmailService {
 
         SimpleMailMessage message = new SimpleMailMessage();
 
+        message.setFrom(username);
+
         message.setTo(toEmail);
 
         message.setSubject("Reset Your Password");
