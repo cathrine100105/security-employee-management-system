@@ -239,6 +239,6 @@ This project provided hands-on experience with:
 | Contributor | Role |
 |-------------|------|
 | **[Jinetta Shree](https://github.com/jinettashree)** | Frontend Development (React.js, UI/UX, API Integration, Responsive Design) |
-| **[Friend's Name](https://github.com/cathrine100105)** | Backend Development (Spring Boot, REST APIs, Spring Security, JWT Authentication, PostgreSQL, Email Integration) |
+| **[Cathrine Praba](https://github.com/cathrine100105)** | Backend Development (Spring Boot, REST APIs, Spring Security, JWT Authentication, PostgreSQL, Email Integration) |
 
 Built as a real-world project to strengthen skills in React, Spring Boot, REST APIs, Authentication, and PostgreSQL while simulating an enterprise-level employee management system.
