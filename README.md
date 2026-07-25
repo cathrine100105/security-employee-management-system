@@ -1,57 +1,54 @@
-# Security Employee Management System
-
-A modern Security Employee Management System built using:
-
-- React.js
-- JavaScript
-- HTML5
-- Tailwind CSS
-
-This project is designed for managing security employee records in an organization.  
-The system allows admin users to:
-
-- Login securely
-- Add employee details
-- View employee records
-- Search employees dynamically
-- Manage shift details and experience information
+# 🛡️ GUARD TRACK
+A full-stack Guard Track application was developed for managing security personnel within an organization. The application provides a secure admin portal for employee management, authentication, and workforce monitoring through an intuitive and responsive interface.
 
 ---
 
-# Project Objective
+# 📌 Project Overview
 
-This project was developed to gain real-time full-stack development experience by building an admin management system for a Security Services Company.
+The Guard Track application was built as a real-world full-stack project to streamline employee management for a Security Services Company.
 
-The application focuses on:
-
-- Employee management
-- Dashboard UI
-- Search functionality
-- Authentication flow
-- Responsive frontend design
+The system enables administrators to securely manage employee records, monitor workforce statistics and perform employee-related operations through a modern web application.
 
 ---
 
-# Features
+# ✨ Features
 
-## Admin Login
-- Admin authentication page
-- Redirect to dashboard after login
-- Form validation
+## 🔐 Authentication
+
+- Secure Login
+- User Registration
+- Protected Routes
+- JWT-based Authentication
+- Forgot Password
+- Reset Password via Email
+- Password Reset Token Validation
 
 ---
 
-## Dashboard
-- Total Employees Count
+## 📊 Dashboard
+
+- Total Employees
 - Day Shift Employees
 - Night Shift Employees
+- Rotational Shift Employees
 - Employees Table
+- Responsive Dashboard Layout
 
 ---
 
-## Add Employee
-Admin can add:
+## 👮 Employee Management
 
+Admin can:
+
+- Add New Employee
+- View Employee Details
+- Delete Employee Records
+- Search Employees
+- Manage Employee Information
+
+Employee information includes:
+
+- Guard ID
 - Employee Name
 - Address
 - Date of Birth
@@ -59,50 +56,189 @@ Admin can add:
 - Qualification
 - Shift Type
 - Experience
-- Primary Contact Number
-- Secondary Contact Number
+- Primary Mobile Number
+- Secondary Mobile Number
+- Assigned Location
+- Joining Date
+- Employment Status
 
 ---
 
-## Employee List
-- View all employee records
-- Search employee data dynamically
-- Search by:
-  - Name
-  - Age
-  - Shift Type
-  - Experience
-  - Mobile Number
+## 🔍 Employee Search
+
+Dynamic search functionality allows administrators to quickly locate employee records without refreshing the page.
+
+Search can be performed using:
+
+- Guard ID
+- Employee Name
+- Qualification
+- Shift Type
+- Assigned Location
+- Employment Status
 
 ---
 
-## Search System
-Implemented using JavaScript dynamic filtering.
+## 📱 Responsive Design
 
-The admin can search employee data instantly without page reload.
+- Mobile Friendly
+- Tablet Support
+- Desktop Optimized
+- Modern UI using Tailwind CSS
 
 ---
 
-# Tech Stack
+# 🛠️ Tech Stack
 
 ## Frontend
-- React.js
-- Tailwind CSS
+
+- React.js (Vite)
+- JavaScript (ES6+)
 - HTML5
-- CSS3
-- JavaScript
-- Tanstack Query
+- Tailwind CSS
+- React Router DOM
+- TanStack Query
 - Axios
+- Lucide React
 
 ---
 
 ## Backend
+
 - Java
 - Spring Boot
+- Spring Security
+- JWT Authentication
 - REST APIs
+- Maven
 
 ---
 
 ## Database
+
 - PostgreSQL
 - Supabase
+
+---
+
+## Email Service
+
+- Spring Mail (JavaMailSender)
+- Gmail SMTP
+
+Used for:
+
+- Forgot Password
+- Password Reset Email
+
+---
+
+## Deployment
+
+### Frontend
+
+- Vercel
+
+### Backend
+
+- Render
+
+### Database
+
+- Supabase PostgreSQL
+
+---
+
+# 📂 Major Modules
+
+- Authentication
+- Dashboard
+- Employee Management
+- Employee Search
+- Forgot Password
+- Reset Password
+- Protected Routes
+- API Integration
+
+---
+
+# ⚙️ Frontend Libraries
+
+- TanStack Query
+- Axios
+- Framer Motion
+- React Router DOM
+- Lucide React
+
+---
+
+# ⚙️ Backend Technologies
+
+- Spring Boot
+- Spring Security
+- JWT
+- Spring Data JPA
+- JavaMailSender
+- Lombok
+
+---
+
+# 🔒 Security Features
+
+- JWT Authentication
+- Password Encryption (BCrypt)
+- Protected API Endpoints
+- Secure Password Reset using Token
+- Route Protection
+- CORS Configuration
+
+---
+
+## ✨ UI & Animations
+
+- Smooth page transitions
+- Animated authentication forms
+- Interactive UI components
+- Responsive and modern user experience using Framer Motion
+
+---
+  
+# 📈 Future Enhancements
+
+- Edit Employee Details
+- Employee Profile Page
+- Attendance Management
+- Leave Management
+- Role-Based Access Control (RBAC)
+- Activity Logs
+- Employee Photo Upload
+- Export Employee Data (PDF/Excel)
+- Dashboard Charts & Analytics
+
+---
+
+# 🚀 Learning Outcomes
+
+This project provided hands-on experience with:
+
+- Full-Stack Application Development
+- REST API Integration
+- Authentication & Authorization
+- React State Management
+- Server-side Development with Spring Boot
+- PostgreSQL Database Design
+- Email Integration
+- Secure Password Reset Flow
+- Deployment using Vercel, Render, and Supabase
+- Responsive UI Development
+
+---
+
+# 👥 Contributors
+
+| Contributor | Role |
+|-------------|------|
+| **[Jinetta Shree](https://github.com/jinettashree)** | Frontend Development (React.js, UI/UX, API Integration, Responsive Design) |
+| **[Friend's Name](https://github.com/cathrine100105)** | Backend Development (Spring Boot, REST APIs, Spring Security, JWT Authentication, PostgreSQL, Email Integration) |
+
+Built as a real-world project to strengthen skills in React, Spring Boot, REST APIs, Authentication, and PostgreSQL while simulating an enterprise-level employee management system.
