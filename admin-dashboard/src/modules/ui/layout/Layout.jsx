@@ -7,7 +7,7 @@ const Layout = () => {
     <div>
       <Sidebar />
 
-      <main className="relative ml-0 lg:ml-64 p-6 min-h-screen bg-gray-100 overflow-hidden">
+      <main className="relative ml-0 lg:ml-64 pt-20 lg:pt-6 p-6 min-h-screen bg-gray-100 overflow-hidden">
         <MousePointer />
 
         <div className="relative z-10">
