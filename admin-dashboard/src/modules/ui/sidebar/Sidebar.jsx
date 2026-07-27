@@ -11,6 +11,8 @@ const navItems = [
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
 
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+
   return (
     <>
       <div className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-gray-600 text-white flex items-center px-4 z-50 shadow">
@@ -51,6 +53,36 @@ const Sidebar = () => {
             <X size={24} />
           </button>
         </div>
+
+        {user?.email && (
+  <div className="flex flex-col items-center py-6 border-b border-slate-500">
+    {user.picture ? (
+      <img
+        src={user.picture}
+        alt={user.name}
+        className="w-20 h-20 rounded-full border-2 border-white object-cover"
+      />
+    ) : (
+      <div className="w-20 h-20 rounded-full bg-gray-500 flex items-center justify-center text-3xl font-bold">
+        {user.name?.charAt(0).toUpperCase() || "U"}
+      </div>
+    )}
+
+    <h3 className="mt-3 text-lg font-semibold">
+      {user.name || "User"}
+    </h3>
+
+    <p className="text-xs text-gray-300 break-all px-3 text-center">
+      {user.email}
+    </p>
+
+    <span className="mt-2 px-3 py-1 text-xs rounded-full bg-gray-500">
+      {user.provider === "GOOGLE"
+        ? "Google Account"
+        : "Local Account"}
+    </span>
+  </div>
+)}
 
         <nav className="mt-4 flex-1">
           {navItems.map((item) => (

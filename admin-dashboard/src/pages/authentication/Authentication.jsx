@@ -10,6 +10,9 @@ import AuthInput from "../../modules/auth/AuthInput";
 import AuthCard from "../../modules/auth/AuthCard";
 import AuthLayout from "../../modules/auth/AuthLayout";
 
+import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "../../hooks/useGoogleLogin";
+
 const Authentication = () => {
   const navigate = useNavigate();
 
@@ -38,7 +41,7 @@ const Authentication = () => {
       });
     },
   );
-
+const { mutate: googleMutate } = useGoogleLogin();
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -63,6 +66,25 @@ const Authentication = () => {
     }
   };
 
+  const handleGoogleLogin = (idToken) => {
+  googleMutate(idToken, {
+    onSuccess: (data) => {
+      localStorage.setItem("token", data.token);
+
+      localStorage.setItem("user", JSON.stringify(data));
+
+      navigate("/");
+    },
+
+    onError: (error) => {
+      alert(
+        error.response?.data?.message ||
+          "Google Login Failed"
+      );
+    },
+  });
+};
+
   return (
     <AuthLayout>
       <AuthCard
@@ -73,7 +95,7 @@ const Authentication = () => {
             : "Create your admin account."
         }
       >
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
           <AuthInput
             label="Email"
             name="email"
@@ -97,7 +119,7 @@ const Authentication = () => {
               <button
                 type="button"
                 onClick={() => navigate("/forgot-password")}
-                className="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
+                className="text-xs sm:text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
               >
                 Forgot Password?
               </button>
@@ -114,7 +136,7 @@ const Authentication = () => {
                 name="role"
                 value={formData.role}
                 onChange={handleChange}
-                className="mt-7 pr-5 text-slate-400 transition hover:text-indigo-600"
+                className="mt-5 md:mt-6 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm md:text-base text-slate-600 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="ADMIN">Admin</option>
                 <option value="USER">User</option>
@@ -123,11 +145,32 @@ const Authentication = () => {
           )}
 
           <AuthButton loading={isLogin ? loginLoading : registerLoading}>
-            {isLogin ? "Sign In" : "Create Account"}
-          </AuthButton>
+  {isLogin ? "Sign In" : "Create Account"}
+</AuthButton>
+
+<div className="my-4 flex items-center">
+  <div className="flex-grow border-t"></div>
+
+  <span className="mx-3 text-gray-400 text-sm">
+    OR
+  </span>
+
+  <div className="flex-grow border-t"></div>
+</div>
+
+<div className="flex justify-center">
+  <GoogleLogin
+    onSuccess={(credentialResponse) =>
+      handleGoogleLogin(credentialResponse.credential)
+    }
+    onError={() => {
+      alert("Google Login Failed");
+    }}
+  />
+</div>
         </form>
 
-        <div className="mt-6 text-center text-sm text-slate-500">
+        <div className="mt-4 md:mt-6 text-center text-sm text-slate-500">
           {isLogin ? (
             <>
               Don't have an account?{" "}
