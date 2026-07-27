@@ -39,3 +39,13 @@ export const resetPassword = async (resetData) => {
 
   return response.data;
 };
+
+import axiosInstance from "./axiosInstance";
+
+export const googleLogin = async (idToken) => {
+  const { data } = await axiosInstance.post("/auth/google", {
+    idToken,
+  });
+
+  return data;
+};

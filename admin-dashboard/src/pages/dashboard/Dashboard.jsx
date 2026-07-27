@@ -43,12 +43,17 @@ const Dashboard = () => {
 
   return (
     <>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2">
-        <div className="bg-gray-500 shadow rounded-lg mt-4 text-center">
-          <h3 className="text-white text-2xl my-2 p-2">Total Employees</h3>
+      <div className="mt-16 lg:mt-0">
+  <SearchBar
+    searchTerm={searchTerm}
+    setSearchTerm={setSearchTerm}
+  />
+</div>
+      <div className="grid grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
+        <div className="col-span-3 lg:col-span-1 bg-gray-500 shadow rounded-lg mt-4 text-center">
+          <h3 className="text-white text-lg md:text-xl lg:text-2xl p-2">Total Employees</h3>
 
-          <p className="text-3xl text-white mb-4">
+          <p className="text-2xl md:text-3xl text-white mb-4">
             {isLoading ? "..." : employees?.length || 0}
           </p>
         </div>
@@ -76,7 +81,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="mt-5 mb-3">
-        <h2 className="text-2xl">EMPLOYEE DASHBOARD</h2>
+        <h2 className="text-xl md:text-2xl font-semibold">EMPLOYEE DASHBOARD</h2>
       </div>
       <div className="flex justify-between items-center">
         <EmployeeTable searchTerm={searchTerm} />
