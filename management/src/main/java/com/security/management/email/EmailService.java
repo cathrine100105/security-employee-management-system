@@ -30,7 +30,7 @@ public class EmailService {
 
         SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setFrom(username);
+        message.setFrom("cathrine.hattakatta@gmail.com");
 
         message.setTo(toEmail);
 
