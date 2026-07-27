@@ -29,9 +29,13 @@ const AuthCard = ({ title, subtitle, children }) => {
 
           <div className="relative z-10">
             <div className="mb-5 md:mb-8 text-center">
-              <h1 className="text-2xl md:text-3xl font-bold text-slate-800">{title}</h1>
+              <h1 className="text-2xl md:text-3xl font-bold text-slate-800">
+                {title}
+              </h1>
 
-              <p className="mt-2 text-sm md:text-base text-slate-500 leading-6 md:leading-7">{subtitle}</p>
+              <p className="mt-2 text-sm md:text-base text-slate-500 leading-6 md:leading-7">
+                {subtitle}
+              </p>
             </div>
 
             {children}

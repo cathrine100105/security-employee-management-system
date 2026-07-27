@@ -58,8 +58,6 @@ const EmployeeTable = ({ searchTerm }) => {
 
   return (
     <div className="max-w-7xl mx-auto mt-3 overflow-x-auto">
-
-
       <Table>
         <TableHeader
           headers={[

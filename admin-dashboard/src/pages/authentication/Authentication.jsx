@@ -41,7 +41,7 @@ const Authentication = () => {
       });
     },
   );
-const { mutate: googleMutate } = useGoogleLogin();
+  const { mutate: googleMutate } = useGoogleLogin();
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -67,23 +67,20 @@ const { mutate: googleMutate } = useGoogleLogin();
   };
 
   const handleGoogleLogin = (idToken) => {
-  googleMutate(idToken, {
-    onSuccess: (data) => {
-      localStorage.setItem("token", data.token);
+    googleMutate(idToken, {
+      onSuccess: (data) => {
+        localStorage.setItem("token", data.token);
 
-      localStorage.setItem("user", JSON.stringify(data));
+        localStorage.setItem("user", JSON.stringify(data));
 
-      navigate("/");
-    },
+        navigate("/");
+      },
 
-    onError: (error) => {
-      alert(
-        error.response?.data?.message ||
-          "Google Login Failed"
-      );
-    },
-  });
-};
+      onError: (error) => {
+        alert(error.response?.data?.message || "Google Login Failed");
+      },
+    });
+  };
 
   return (
     <AuthLayout>
@@ -145,29 +142,31 @@ const { mutate: googleMutate } = useGoogleLogin();
           )}
 
           <AuthButton loading={isLogin ? loginLoading : registerLoading}>
-  {isLogin ? "Sign In" : "Create Account"}
-</AuthButton>
+            {isLogin ? "Sign In" : "Create Account"}
+          </AuthButton>
 
-<div className="my-4 flex items-center">
-  <div className="flex-grow border-t"></div>
+          <div className="my-4 flex items-center">
+            <div className="flex-grow border-t"></div>
 
-  <span className="mx-3 text-gray-400 text-sm">
-    OR
-  </span>
+            <span className="mx-3 text-gray-400 text-sm">OR</span>
 
-  <div className="flex-grow border-t"></div>
-</div>
+            <div className="flex-grow border-t"></div>
+          </div>
 
-<div className="flex justify-center">
-  <GoogleLogin
-    onSuccess={(credentialResponse) =>
-      handleGoogleLogin(credentialResponse.credential)
-    }
-    onError={() => {
-      alert("Google Login Failed");
-    }}
-  />
-</div>
+          <div className="flex justify-center">
+            <GoogleLogin
+              onSuccess={(credentialResponse) =>
+                handleGoogleLogin(credentialResponse.credential)
+              }
+              onError={() => alert("Google Login Failed")}
+              theme="outline"
+              size="large"
+              shape="pill"
+              text="Continue with"
+              width="320"
+              logo_alignment="left"
+            />
+          </div>
         </form>
 
         <div className="mt-4 md:mt-6 text-center text-sm text-slate-500">

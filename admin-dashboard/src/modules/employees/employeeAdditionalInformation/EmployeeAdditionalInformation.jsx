@@ -3,6 +3,7 @@ import SelectField from "../../ui/DropDown/DropDown";
 
 import { useCreateEmployee } from "../../../hooks/useCreateEmployee";
 import { useUpdateEmployee } from "../../../hooks/useUpdateEmployee";
+import SaveButton from "../../ui/button/SaveButton";
 import { useNavigate } from "react-router-dom";
 
 const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
@@ -14,7 +15,7 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
 
   const { mutate: updateEmployee } = useUpdateEmployee(() => {
     alert("Employee Updated Successfully");
-    navigate("/");
+    navigate("/employees");
   });
 
   const handleChange = (e) => {
@@ -102,12 +103,9 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
       </div>
 
       <div className="flex justify-center mt-6 md:mt-7">
-        <button
-          className="w-full sm:w-auto bg-blue-400 text-white px-6 py-3 rounded-lg"
-          onClick={handleSave}
-        >
+        <SaveButton onClick={handleSave}>
           {guardId ? "Update Employee" : "Save Employee"}
-        </button>
+        </SaveButton>
       </div>
     </div>
   );
