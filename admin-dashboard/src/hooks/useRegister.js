@@ -20,7 +20,6 @@ export const useRegister = (onSuccess) => {
       } else if (status === 400) {
         alert("Invalid registration details");
       } else if (status === 500) {
-        // Current backend returns 500 for duplicate email
         alert("Email already exists");
       } else {
         alert("Registration Failed");

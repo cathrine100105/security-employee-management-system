@@ -16,7 +16,7 @@ const EmployeeCard = ({ employee }) => {
   const handleDelete = (guardId) => {
     if (window.confirm("Are you sure you want to delete this employee?")) {
       mutate(guardId);
-      navigate("/");
+      navigate("/employees");
     }
   };
 

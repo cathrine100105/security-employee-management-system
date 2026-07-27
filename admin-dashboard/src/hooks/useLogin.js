@@ -8,10 +8,8 @@ export const useLogin = (onSuccess) => {
     onSuccess: (data) => {
       console.log("Login Success", data);
 
-      // Store JWT Token
       localStorage.setItem("token", data.token);
 
-      // Store User Details
       localStorage.setItem("user", JSON.stringify(data));
 
       if (onSuccess) {
