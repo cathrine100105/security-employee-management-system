@@ -20,19 +20,19 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final EmailService emailService;
 
-    public UserEntity login(String email,String password){
+    public UserEntity login(String email, String password) {
 
         UserEntity user = userRepository.findByEmail(email)
                 .orElseThrow(() ->
-                        new RuntimeException("Invalid email or password")
+                        new IllegalArgumentException("Invalid email or password")
                 );
 
         if ("GOOGLE".equals(user.getProvider())) {
-            throw new RuntimeException("Please login using Google");
+            throw new IllegalArgumentException("Please login using Google");
         }
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new RuntimeException("Invalid email or password");
+            throw new IllegalArgumentException("Invalid email or password");
         }
 
         return user;
