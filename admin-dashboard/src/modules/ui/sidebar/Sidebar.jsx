@@ -29,7 +29,7 @@ const Sidebar = () => {
         />
       )}
 
-      <aside
+      <div
         className={`
           fixed top-0 left-0
           h-dvh w-72 max-w-[85vw]
@@ -70,7 +70,7 @@ const Sidebar = () => {
         <div className="p-4 border-t border-slate-500 flex justify-center">
           <LogoutButton />
         </div>
-      </aside>
+      </div>
     </>
   );
 };
