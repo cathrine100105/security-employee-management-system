@@ -11,14 +11,11 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
           h-12
           px-4
           border
-          border-gray-300
+          border-black
           rounded-lg
           shadow-sm
           text-sm md:text-base
           focus:outline-none
-          focus:ring-2
-          focus:ring-blue-200
-          focus:border-blue-300
         "
       />
     </div>

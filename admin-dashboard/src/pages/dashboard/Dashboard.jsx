@@ -26,7 +26,7 @@ const Dashboard = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setTipIndex((prev) => (prev + 1) % securityTips.length);
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);
@@ -38,11 +38,11 @@ const Dashboard = () => {
           <Shield className="w-16 h-16 text-blue-600 animate-pulse" />
 
           <div className="text-center">
-            <h2 className="text-xl font-bold text-gray-800">
+            <h2 className="text-xl font-bold text-black">
               Loading Security System
             </h2>
 
-            <p className="text-gray-500">Retrieving employee records...</p>
+            <p className="text-black">Retrieving employee records...</p>
           </div>
         </div>
       </div>
@@ -68,9 +68,9 @@ const Dashboard = () => {
               )}
 
               <div className="flex flex-col overflow-hidden">
-                <h2 className="text-2xl">Hey, {user.name || "User"} 👋</h2>
+                <h2 className="text-3xl">Hey, {user.name || "User"} 👋</h2>
 
-                <h1>Welcome back!</h1>
+                <h4 className="text-xl">Welcome back!</h4>
               </div>
             </div>
           )}
@@ -122,7 +122,7 @@ const Dashboard = () => {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: "100%", opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="text-center text-sm sm:text-base md:text-lg font-medium text-gray-700 px-4"
+            className="text-center text-sm sm:text-base md:text-lg font-medium bold text-black px-4"
           >
             🛡️ {securityTips[tipIndex]}
           </motion.p>
