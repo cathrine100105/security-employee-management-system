@@ -10,7 +10,7 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
   const navigate = useNavigate();
   const { mutate: createEmployee } = useCreateEmployee(() => {
     alert("Employee Added Successfully");
-    navigate("/");
+    navigate("/employees");
   });
 
   const { mutate: updateEmployee } = useUpdateEmployee(() => {
