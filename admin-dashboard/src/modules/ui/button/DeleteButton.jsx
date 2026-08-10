@@ -6,6 +6,7 @@ const DeleteButton = ({ onClick }) => {
       onClick={onClick}
       className="
         flex
+        justify-center
         items-center
         gap-2
         bg-red-400

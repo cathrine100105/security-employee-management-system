@@ -16,19 +16,20 @@ const EmployeeCard = ({ employee }) => {
   const handleDelete = (guardId) => {
     if (window.confirm("Are you sure you want to delete this employee?")) {
       mutate(guardId);
-      navigate("/");
+      navigate("/employees");
     }
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-8">
-      <div className="grid grid-cols-3 items-center mb-8">
-        <div></div>
-        <h1 className="text-3xl font-bold text-center mb-8 tracking-wider">
+    <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 md:p-8">
+      <div className="flex flex-col gap-4 md:grid md:grid-cols-3 md:items-center mb-6 md:mb-8">
+        <div className="hidden md:block"></div>
+
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center tracking-wider">
           EMPLOYEE DETAILS
         </h1>
 
-        <div className="flex justify-end gap-3 mb-8">
+        <div className="flex justify-center md:justify-end gap-3">
           <EditButton onClick={() => handleEdit(employee.guardId)} />
           <DeleteButton onClick={() => handleDelete(employee.guardId)} />
         </div>

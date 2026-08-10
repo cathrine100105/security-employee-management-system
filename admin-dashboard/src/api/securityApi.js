@@ -1,7 +1,7 @@
 import api from "../services/axiosInstance";
 
 export const getEmployees = async () => {
-  const response = await api.get("/security", {
+  const response = await api.get("/api/security", {
     params: {
       page: 0,
       size: 100,
@@ -13,18 +13,18 @@ export const getEmployees = async () => {
   return response.data;
 };
 export const createEmployee = async (employee) => {
-  const response = await api.post("/security", employee);
+  const response = await api.post("/api/security", employee);
 
   console.log("POST Response:", response.data);
 
   return response.data;
 };
 export const deleteEmployee = async (guardId) => {
-  const response = await api.delete(`/security/${guardId}`);
+  const response = await api.delete(`/api/security/${guardId}`);
   return response.data;
 };
 export const searchEmployees = async (keyword) => {
-  const response = await api.get("/security/search", {
+  const response = await api.get("/api/security/search", {
     params: {
       keyword,
     },
@@ -34,12 +34,12 @@ export const searchEmployees = async (keyword) => {
 };
 
 export const updateEmployee = async ({ guardId, employee }) => {
-  const response = await api.put(`/security/${guardId}`, employee);
+  const response = await api.put(`/api/security/${guardId}`, employee);
 
   return response.data;
 };
 
 export const getEmployeeById = async (guardId) => {
-  const response = await api.get(`/security/${guardId}`);
+  const response = await api.get(`/api/security/${guardId}`);
   return response.data;
 };
