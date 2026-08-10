@@ -4,6 +4,7 @@ import EmployeeAdditionalInformation from "../../modules/employees/employeeAddit
 import { useEmployee } from "../../hooks/useEmployee";
 import { useParams } from "react-router-dom";
 import BackButton from "../../modules/ui/button/BackButton";
+import ZoomIn from "../../modules/ui/animation/ZoomIn";
 const AddEmployee = () => {
   const { guardId } = useParams();
 
@@ -30,27 +31,31 @@ const AddEmployee = () => {
   }, [data]);
   return (
     <>
-      <div className="relative flex items-center justify-center mb-6">
-        <div className="absolute left-0">
-          <BackButton />
+      <ZoomIn delay={0.1}>
+        <div className="relative flex items-center justify-center mb-4 md:mb-6">
+          <div className="absolute left-0 top-1/2 -translate-y-1/2">
+            <BackButton />
+          </div>
+
+          <h1 className="text-base sm:text-2xl md:text-3xl font-semibold tracking-wide text-center px-10">
+            {guardId ? "UPDATE EMPLOYEE" : "ADD EMPLOYEE"}
+          </h1>
         </div>
+      </ZoomIn>
+      <ZoomIn delay={0.1}>
+        <div className="w-full max-w-5xl mx-auto mt-4 md:mt-6 bg-white shadow-md rounded-xl p-4 sm:p-6 md:p-5 md:p-6 border border-gray-200">
+          <EmployeePersonalInformation
+            employee={employee}
+            setEmployee={setEmployee}
+          />
 
-        <h1 className="text-3xl font-bold tracking-wide">
-          {guardId ? "UPDATE EMPLOYEE" : "ADD EMPLOYEE"}
-        </h1>
-      </div>
-      <div className="max-w-5xl mx-auto mt-6 bg-white shadow-md rounded-xl p-8 border border-gray-200">
-        <EmployeePersonalInformation
-          employee={employee}
-          setEmployee={setEmployee}
-        />
-
-        <EmployeeAdditionalInformation
-          employee={employee}
-          setEmployee={setEmployee}
-          guardId={guardId}
-        />
-      </div>
+          <EmployeeAdditionalInformation
+            employee={employee}
+            setEmployee={setEmployee}
+            guardId={guardId}
+          />
+        </div>
+      </ZoomIn>
     </>
   );
 };
