@@ -17,6 +17,7 @@ const AddEmployee = () => {
     age: "",
     mobile1: "",
     mobile2: "",
+    joinedDate:"",
     qualification: "",
     shiftType: "",
     assignedLocation: "",
