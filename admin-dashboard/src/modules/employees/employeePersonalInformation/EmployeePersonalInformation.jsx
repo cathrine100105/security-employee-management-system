@@ -74,6 +74,15 @@ const EmployeePersonalInformation = ({ employee, setEmployee }) => {
             "Post Graduate",
           ]}
         />
+
+        <InputField
+          label="JOINED DATE"
+          name="joinedDate"
+          type="date"
+          value={employee.joinedDate}
+          onChange={handleChange}
+          max={new Date().toISOString().split("T")[0]}
+        />
       </div>
     </div>
   );
