@@ -60,17 +60,8 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto mt-5">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-        <InputField
-          label="JOINED DATE"
-          name="joinedDate"
-          type="date"
-          value={employee.joinedDate}
-          onChange={handleChange}
-          max={new Date().toISOString().split("T")[0]}
-        />
-
+    <div className="max-w-4xl mx-auto mt-5 font-bold">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <InputField
           label="ASSIGNED LOCATION"
           name="assignedLocation"
