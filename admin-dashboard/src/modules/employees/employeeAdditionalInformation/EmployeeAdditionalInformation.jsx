@@ -1,5 +1,5 @@
 import InputField from "../../ui/inputField/InputField";
-import SelectField from "../../ui/DropDown/DropDown";
+import DropDown from "../../ui/DropDown/DropDown";
 
 import { useCreateEmployee } from "../../../hooks/useCreateEmployee";
 import { useUpdateEmployee } from "../../../hooks/useUpdateEmployee";
@@ -44,7 +44,12 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
     return;
   }
 
-  if (guardId) {
+    if (new Date(employee.joinedDate) > new Date()) {
+      alert("Joined Date cannot be a future date.");
+      return;
+    }
+
+    if (guardId) {
       updateEmployee({
         guardId,
 
@@ -60,7 +65,16 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
         <InputField
-          label="LOCATION"
+          label="JOINED DATE"
+          name="joinedDate"
+          type="date"
+          value={employee.joinedDate}
+          onChange={handleChange}
+          max={new Date().toISOString().split("T")[0]}
+        />
+
+        <InputField
+          label="ASSIGNED LOCATION"
           name="assignedLocation"
           value={employee.assignedLocation}
           onChange={handleChange}
@@ -73,21 +87,8 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
           value={employee.experience}
           onChange={handleChange}
         />
-        <SelectField
-          label="QUALIFICATION"
-          name="qualification"
-          value={employee.qualification}
-          onChange={handleChange}
-          options={[
-            "SSLC",
-            "HSLC",
-            "Diploma",
-            "Under Graduate",
-            "Post Graduate",
-          ]}
-        />
 
-        <SelectField
+        <DropDown
           label="SHIFT TYPE"
           name="shiftType"
           value={employee.shiftType}
@@ -95,8 +96,7 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
           options={["Day Shift", "Night Shift", "Rotational Shift"]}
         />
 
-        
-        <SelectField
+        <DropDown
           label="STATUS"
           name="status"
           value={employee.status}
