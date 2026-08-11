@@ -60,7 +60,7 @@ const EmployeeAdditionalInformation = ({ employee, setEmployee, guardId }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-5 font-bold">
+    <div className="max-w-4xl mx-auto mt-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <InputField
           label="ASSIGNED LOCATION"
